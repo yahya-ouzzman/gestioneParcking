@@ -1,0 +1,27 @@
+{
+  "Clients": [
+    {
+      "id": "41",
+      "nom": "GAMBOL",
+      "prenom": "AZ",
+      "date": "2026-02-02",
+      "statut": "valid",
+      "tel": "0619329855",
+      "img": "bg_login3.jpg"
+    }
+  ],
+  "ID_client": {
+    "id": "41"
+  },
+  "ID_cars": {
+    "id": "18"
+  },
+  "Cars": [
+    {
+      "id": "18",
+      "marque": "bmw3",
+      "client_id": "41",
+      "img": "CAR1.png"
+    }
+  ]
+}

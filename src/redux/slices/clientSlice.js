@@ -32,8 +32,14 @@ const clientsSlice = createSlice({
                 state.cars[index] = action.payload;
             }
         },
-        deletCars : (state, action) => {state.cars = state.cars.filter(c => c.id !== action.payload.toString())}
+        deletCars : (state, action) => {state.cars = state.cars.filter(c => c.id !== action.payload.toString())},
+        editeStatut : (state, action) =>{
+            const index = state.clients.findIndex(c => c.id === action.payload.id.toString());
+            if (index !== -1){
+                state.clients[index].statut = action.payload.statut;
+            }
+        }
     }
 })
-export const {fetchClient , addClient, editeClient, deletClient, fetchCars, addCars, editeCars, deletCars} = clientsSlice.actions;
+export const {fetchClient , addClient, editeClient, deletClient, fetchCars, addCars, editeCars, deletCars, editeStatut} = clientsSlice.actions;
 export default clientsSlice.reducer;

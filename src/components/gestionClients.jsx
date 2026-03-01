@@ -91,19 +91,12 @@ function Gestion_client() {
             
             axios.delete(`${link_client}/${id}`)
                 .then(() => {
-                    dispatch(deletClient(id)); // حذف العميل من Redux
-
-                    // 2. البحث عن سيارات هذا العميل في المصفوفة الحالية
-                    // تأكد أن cars قادمة من useSelector(state => state.Programe.cars)
-                    console.log(cars)
-                    console.log('ya')
+                    dispatch(deletClient(id)); 
                     const voituresDuClient = cars.filter((c) => String(c.client_id) === String(id));
-
-                    // 3. حذف كل سيارة على حدة
                     voituresDuClient.forEach((car) => {
                         axios.delete(`http://localhost:3005/Cars/${car.id}`)
                             .then(() => {
-                                dispatch(deletCars(car.id)); // حذف السيارة من Redux فور نجاح حذفها من السيرفر
+                                dispatch(deletCars(car.id)); 
                             })
                             .catch(err => console.log("Erreur suppression voiture:", err));
                     });
@@ -355,7 +348,7 @@ function Gestion_client() {
                             </th>
                             <td className="px-6 py-4">{c.date}</td>
                             <td className="px-6 py-4">
-                                <span className='px-2 py-1 rounded-lg border border-green-700 bg-green-300 text-green-700'>{c.statut}</span>
+                                <span className={`px-2 py-1 rounded-lg border ${c.statut.toLowerCase() === 'valid' ? 'text-green-700 border-green-700 bg-green-300' : 'text-red-700 border-red-700 bg-red-300'} `}>{c.statut}</span>
                             </td>
                             <td className="px-6 py-4">{c.tel}</td>
                             <td className="px-6 py-4 ">
